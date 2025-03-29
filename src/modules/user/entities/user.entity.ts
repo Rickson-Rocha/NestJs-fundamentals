@@ -4,19 +4,18 @@ interface UserParams {
     name: string;
     password: string;
     createdAt?: Date;
-    id?: string;
 }
 export class UserEntity {
-    private id?: string;
+    private id: string;
     private name: string;
     private password: string;
     private createdAt: Date;
 
-    constructor(params: UserParams) {
-        this.id = params.id || randomUUID();
+    constructor(params: UserParams, id?: string) {
+        this.id = id || randomUUID();
         this.name = params.name;
         this.password = params.password;
-        this.createdAt = params.createdAt || new Date();
+        this.createdAt = params.createdAt ?? new Date();
     }
 
     public getId(): string {
