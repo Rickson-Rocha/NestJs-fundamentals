@@ -11,8 +11,8 @@ import { JwtStrategy } from 'src/modules/auth/strategies/jwt.strategy';
 
 @Module({
   imports: [DatabaseModule, UserModule, JwtModule.register({
-    secret: 'c65c135d6fe82d282690955187fe07bc',
-    signOptions: { expiresIn: '30d' }
+    secret: process.env.JWT_SECRET,
+    signOptions: { expiresIn: process.env.JWT_EXPIRE }
   })],
   controllers: [AuthController],
   providers: [LocalStrategy, JwtStrategy, ValidateUserUseCase, SignInUseCase]
