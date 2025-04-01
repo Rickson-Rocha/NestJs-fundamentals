@@ -6,13 +6,17 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class PrismaUserRepository implements UserRepository {
     constructor(private prisma: PrismaService) { }
+    async findByEmail(email: string): Promise<UserEntity | null> {
+        const user = await this.prisma.user.findUnique({
+            where: { email },
+        });
+
+        if (!user) return null;
+
+        return new UserEntity(user);
+    }
     async create(user: UserEntity): Promise<void> {
-        console.log(`Verificando valores de user no método create do prisma:`);
-        console.log(`id: ${user.getId()}`);
-        console.log(`password: ${user.getPassword()}`);
-        console.log(`createdAt: ${user.getCreatedAt()}`);
-        console.log(`name: ${user.getName()}`);
-        console.log(`email: ${user.getEmail()}`);
+
         await this.prisma.user.create({
             data: {
                 id: user.getId(),
