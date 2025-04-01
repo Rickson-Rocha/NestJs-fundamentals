@@ -5,16 +5,16 @@ import { UserViewModel } from './viewModel/user.view.model';
 
 @Controller('users')
 export class UserController {
-    constructor(private createUserUserCase: CreateUserUseCase) { }
-    @Post()
-    async create(@Body() data: CreateUserDto) {
-        const { name, email, password } = data;
-        const user = await this.createUserUserCase.execute({
-            name,
-            email,
-            password,
-        });
+  constructor(private createUserUserCase: CreateUserUseCase) {}
+  @Post()
+  async create(@Body() data: CreateUserDto) {
+    const { name, email, password } = data;
+    const user = await this.createUserUserCase.execute({
+      name,
+      email,
+      password,
+    });
 
-        return UserViewModel.toHttpResponse(user);
-    }
+    return UserViewModel.toHttpResponse(user);
+  }
 }

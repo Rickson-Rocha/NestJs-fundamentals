@@ -8,9 +8,11 @@ import { JwtAuthGuard } from './infra/http/modules/auth/guards/jwt.auth.guard';
 @Module({
   imports: [DatabaseModule, UserModule, AuthModule],
   controllers: [],
-  providers: [{
-    provide: APP_GUARD,
-    useClass: JwtAuthGuard,
-  },],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    },
+  ],
 })
-export class AppModule { }
+export class AppModule {}

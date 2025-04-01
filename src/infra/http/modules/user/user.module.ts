@@ -8,4 +8,4 @@ import { CreateUserUseCase } from 'src/modules/user/usecases/create.user.use.cas
   controllers: [UserController],
   providers: [CreateUserUseCase],
 })
-export class UserModule { }
+export class UserModule {}

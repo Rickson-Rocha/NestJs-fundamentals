@@ -3,7 +3,6 @@ import { PrismaService } from './prisma/prisma.service';
 import { UserRepository } from 'src/modules/user/repositories/user.repository';
 import { PrismaUserRepository } from './repositories/prisma.user.repository';
 
-
 @Module({
   providers: [
     PrismaService,
@@ -14,4 +13,4 @@ import { PrismaUserRepository } from './repositories/prisma.user.repository';
   ],
   exports: [UserRepository],
 })
-export class DatabaseModule { }
+export class DatabaseModule {}

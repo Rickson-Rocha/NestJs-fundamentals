@@ -10,7 +10,7 @@ interface CreateUserRequest {
 }
 @Injectable()
 export class CreateUserUseCase {
-  constructor(private userRepository: UserRepository) { }
+  constructor(private userRepository: UserRepository) {}
   async execute(data: CreateUserRequest) {
     const encryptPassword = await bcrypt.hash(data.password, 10);
 
