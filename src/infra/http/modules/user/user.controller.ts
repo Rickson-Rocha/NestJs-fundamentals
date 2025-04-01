@@ -14,7 +14,7 @@ export class UserController {
             email,
             password,
         });
-        console.log("user do controller" + user)
+
         return UserViewModel.toHttpResponse(user);
     }
 }

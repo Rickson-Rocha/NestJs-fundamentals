@@ -13,7 +13,6 @@ export class ValidateUserUseCase {
 
     async execute(data: ValidateUserRequest) {
         const user = await this.userRepository.findByEmail(data.email);
-        console.log("User do validateUserUsecase" + user)
         if (user) {
             const isPasswordMatched = await compare(data.password, user.getPassword());
             if (isPasswordMatched) {

@@ -9,7 +9,7 @@ interface SignInRequest {
 export class SignInUseCase {
     constructor(private jwtService: JwtService) { }
     async execute({ user }: SignInRequest) {
-        console.log("use case signin")
+
         const payload: UserPayload = {
             sub: user.getId(),
             name: user.getName(),
@@ -17,7 +17,7 @@ export class SignInUseCase {
             createdAt: user.getCreatedAt().toJSON()
         }
         const jwtToken = this.jwtService.sign(payload)
-        console.log(jwtToken)
+
         return jwtToken;
     };
 }
