@@ -1,11 +1,12 @@
-import { NotFoundException, UnauthorizedException } from '@nestjs/common';
+import { Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { TaskRepository } from '../repositories/task.repository';
 
 interface DeleteTaskRequest {
     taskId: string;
     userId: string;
 }
-export class CreateTaskUseCase {
+@Injectable()
+export class DeleteTaskUseCase {
     constructor(private taskRepository: TaskRepository) { }
     async execute(data: DeleteTaskRequest) {
         const task = await this.taskRepository.findById(data.taskId)

@@ -1,3 +1,4 @@
+import { Injectable } from "@nestjs/common";
 import { TaskRepository } from "../repositories/task.repository";
 
 export interface GetManyTaskRequest {
@@ -5,6 +6,8 @@ export interface GetManyTaskRequest {
     page?: string
     perPage?: string
 }
+
+@Injectable()
 export class GetManyTaskUseCase {
     constructor(private taskRepository: TaskRepository) { }
     async execute(data: GetManyTaskRequest) {

@@ -1,4 +1,4 @@
-import { NotFoundException, UnauthorizedException } from "@nestjs/common";
+import { Injectable, NotFoundException, UnauthorizedException } from "@nestjs/common";
 import { TaskRepository } from "../repositories/task.repository";
 
 interface EditTaskRequest {
@@ -8,6 +8,7 @@ interface EditTaskRequest {
     userId: string
 }
 
+@Injectable()
 export class EditTaskUseCase {
     constructor(private taskRepository: TaskRepository) { }
 
